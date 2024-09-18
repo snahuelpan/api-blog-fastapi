@@ -2,17 +2,19 @@ from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional
 
-class UserBase(BaseModel):
-    email: str
-    full_name: str
+class ArticleBase(BaseModel):
+    name: str
+    description: str
 
-class UserCreate(UserBase):
-    password: str
+class ArticleCreate(ArticleBase):
+    tags: str
 
-class UserOut(UserBase):
+
+class ArticleOut(ArticleBase):
     id: int
     created_at: Optional[datetime]  # Permitir que sea None si es necesario
     updated_at: Optional[datetime]  # Permitir que sea None si es necesario
+
 
     class Config:
         from_attributes = True  # Cambiado de orm_mode a from_attributes
